@@ -14,11 +14,11 @@ Market-Guardian helps users understand market conditions by turning live crypto 
 
 > ⚠️ **Disclaimer:** This project is for educational purposes only and does not provide financial, trading, or investment advice.
 
-## 🌐 Live Links (Production)
+## 🌐 Live Deployment
 
-- **UI:** https://guardian.ai-coach-lab.com  
-- **API Docs (Swagger):** https://guardian-api.ai-coach-lab.com/docs  
-- **Health Check:** https://guardian-api.ai-coach-lab.com/health
+- **UI**: https://guardian-ai-coach-lab.com  
+- **API**: https://market-guardian-api-v2.azurewebsites.net  
+- **API Docs**: https://market-guardian-api-v2.azurewebsites.net/docs
 
 ## 🖼️ App Preview
 
