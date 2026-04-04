@@ -16,9 +16,9 @@ Market-Guardian helps users understand market conditions by turning live crypto 
 
 ## 🌐 Live Deployment
 
-- **UI**: https://guardian-ai-coach-lab.com  
-- **API**: https://market-guardian-api-v2.azurewebsites.net  
-- **API Docs**: https://market-guardian-api-v2.azurewebsites.net/docs
+- **UI**: https://guardian.ai-coach-lab.com  
+- **API**: https://guardian-api.ai-coach-lab.com  
+- **API Docs**: https://guardian-api.ai-coach-lab.com/docs  
 
 ## 🖼️ App Preview
 
