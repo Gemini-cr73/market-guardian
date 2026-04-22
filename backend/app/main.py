@@ -1,3 +1,5 @@
+import os
+
 from app.schemas.papertrade import PaperTradeRequest
 from app.services.ai_advisor_service import get_ai_trade_advice
 from app.services.crypto_service import fetch_crypto_markets
@@ -16,7 +18,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Market-Guardian API")
 
-allowed_origins = [
+# Prefer env-driven CORS for production, with safe defaults.
+default_origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:3001",
@@ -24,6 +27,13 @@ allowed_origins = [
     "https://guardian.ai-coach-lab.com",
     "https://market-guardian-ui-prod-bdehcxhna9ehhvcz.eastus-01.azurewebsites.net",
 ]
+
+cors_env = os.getenv("ALLOWED_ORIGINS", "").strip()
+allowed_origins = (
+    [origin.strip() for origin in cors_env.split(",") if origin.strip()]
+    if cors_env
+    else default_origins
+)
 
 app.add_middleware(
     CORSMiddleware,
