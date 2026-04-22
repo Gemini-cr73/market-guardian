@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Cloud-Azure_App_Service-0078D4?style=for-the-badge&logo=microsoftazure" />
+  <img src="https://img.shields.io/badge/Cloud-Railway-0B0D0E?style=for-the-badge&logo=railway" />
   <img src="https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi" />
   <img src="https://img.shields.io/badge/UI-Next.js-000000?style=for-the-badge&logo=next.js" />
   <img src="https://img.shields.io/badge/Containers-Docker-2496ED?style=for-the-badge&logo=docker" />
@@ -17,8 +17,9 @@ Market-Guardian helps users understand market conditions by turning live crypto 
 ## 🌐 Live Deployment
 
 - **UI**: https://guardian.ai-coach-lab.com  
-- **API**: https://guardian-api.ai-coach-lab.com  
-- **API Docs**: https://guardian-api.ai-coach-lab.com/docs  
+- **API Base**: https://guardian-api.ai-coach-lab.com  
+- **API Docs (Swagger)**: https://guardian-api.ai-coach-lab.com/docs  
+- **Health Check**: https://guardian-api.ai-coach-lab.com/health  
 
 ## 🖼️ App Preview
 
@@ -40,11 +41,11 @@ Market-Guardian combines:
 
 - **Crypto market monitoring**
 - **Forex exchange-rate tracking**
-- **Risk scoring** (low / medium / high)
+- **Risk scoring (low / medium / high)**
 - **Safe-entry checklist guidance**
 - **Paper trading simulation**
 - **Portfolio summary and trade history**
-- **Optional AI market commentary** via **Groq**
+- **Optional AI market commentary via Groq**
 
 ## ✅ Features
 
@@ -58,24 +59,27 @@ Market-Guardian combines:
 | Portfolio | Trade history | Stores and displays simulated trade activity |
 | Portfolio | Portfolio summary | Aggregates total trades, investment, profit/loss, and trade bias |
 | Learning | AI advisor | Generates educational market commentary using Groq |
-| Platform | UI + API separation | Next.js UI calls FastAPI backend over HTTP/HTTPS |
-| Deployment | Cloud-ready | Dockerized and deployed to Azure App Service |
+| Platform | UI + API separation | Next.js UI calls FastAPI backend over HTTPS |
+| Deployment | Cloud-native | Dockerized backend deployed on Railway |
 
 ## 🧠 Architecture
 
-### Production
+### Production Overview
 
-- **Next.js UI (public):** `guardian.ai-coach-lab.com`
-- **FastAPI API (public):** `guardian-api.ai-coach-lab.com`
-- Cloudflare handles DNS (CNAME)
-- Azure App Service handles hosting + SSL
+- **Frontend (Next.js)** deployed separately (Vercel)
+- **Backend (FastAPI)** deployed on Railway (Docker container)
+- **Database (Postgres)** available via Railway (optional / future persistence)
+- **Cloudflare** handles DNS, SSL, and domain routing
 
 ```mermaid
 flowchart LR
   U["User (Browser)"] --> UI["Next.js UI<br/>guardian.ai-coach-lab.com"]
   UI -->|HTTPS JSON| API["FastAPI API<br/>guardian-api.ai-coach-lab.com"]
-  API --> CRYPTO["Crypto market data"]
-  API --> FX["Forex exchange data"]
-  API --> RISK["Risk engine"]
-  API --> PT["Paper trading logic"]
-  API --> AI["Groq AI advisor (optional)"]
+
+  API --> CRYPTO["Crypto Market APIs"]
+  API --> FX["Forex APIs"]
+  API --> RISK["Risk Engine"]
+  API --> PT["Paper Trading Logic"]
+  API --> AI["Groq LLM (optional)"]
+
+  API --> DB["Postgres (Railway - optional)"]
